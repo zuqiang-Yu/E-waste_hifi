@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-waste category</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f8ff;
+            margin: 0;
+            padding: 20px;
+        }
+        
+        .game-container {
+            max-width: 1200px;
+            max-height: 1600px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        
+        .timer {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        
+        .bins-container {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 30px;
+        }
+        
+        .bin {
+            width: 150px;
+            height: 180px;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-end;
+            padding-bottom: 10px;
+            font-weight: bold;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .bin::before {
+            content: "";
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            bottom: 50px;
+            border-radius: 50%;
+        }
+        
+        #recyclable-bin {
+            background-color: #4CAF50;
+            color: white;
+        }
+        
+        #recyclable-bin::before {
+            background-color: rgba(255,255,255,0.2);
+        }
+        
+        #non-recyclable-bin {
+            background-color: #f44336;
+            color: white;
+        }
+        
+        #non-recyclable-bin::before {
+            background-color: rgba(255,255,255,0.2);
+        }
+        
+        #e-waste-bin {
+            background-color: #FF9800;
+            color: white;
+        }
+        
+        #e-waste-bin::before {
+            background-color: rgba(255,255,255,0.2);
+        }
+        
+        .waste-item {
+            width: 200px;
+            height: 200px;
+            margin: 20px auto;
+            border-radius: 8px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-color: #fff;
+            box-shadow: 0 0 5px rgba(0,0,0,0.3);
+            cursor: grab;
+            transition: transform 0.1s;
+            margin-bottom: 200px;
+        }
+        
+        .waste-item:active {
+            cursor: grabbing;
+        }
+        
+        .remaining {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        
+        .game-over {
+            display: none;
+            margin-top: 20px;
+        }
+        
+        .leaderboard {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f5f5f5;
+            border-radius: 8px;
+        }
+        
+        .leaderboard h2 {
+            margin-top: 0;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        th, td {
+            padding: 8px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+        
+        .start-button, .restart-button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        
+        .restart-button {
+            background-color: #2196F3;
+        }
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <h1>E-waste category</h1>
+        <div class="timer">Time: 01:00</div>
+        <div class="remaining">Rest need to category: 50</div>
+
+        <div class="waste-item" id="current-waste" draggable="true"></div>
+        
+        <div class="bins-container">
+            <div class="bin" id="recyclable-bin" data-type="recyclable">
+                recyclable-bin
+            </div>
+            <div class="bin" id="non-recyclable-bin" data-type="non-recyclable">
+                non-recyclable-bin
+            </div>
+            <div class="bin" id="e-waste-bin" data-type="e-waste">
+                e-waste-bin
+            </div>
+        </div>
+        
+        
+        
+        <button class="start-button" id="start-button">start game</button>
+        
+        <div class="game-over" id="game-over">
+            <h2>game over!</h2>
+            <p>You categoried corrected <span id="correct-count">0</span> waste</p>
+            <p>Time used: <span id="time-used">00:00</span></p>
+            <button class="restart-button" id="restart-button">play again</button>
+            
+            <div class="leaderboard">
+                <h2>leaderboard</h2>
+                <table id="leaderboard-table">
+                    <thead>
+                        <tr>
+                            <th>ranking</th>
+                            <th>score</th>
+                            <th>used time</th>
+                            <th>date time</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>
