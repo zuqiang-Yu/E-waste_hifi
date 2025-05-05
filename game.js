@@ -37,7 +37,8 @@ document.addEventListener('DOMContentLoaded', function() {
             { image: 'images/paper.jpg', type: 'recyclable' },
             { image: 'images/glass-bottle.jpg', type: 'recyclable' },
             { image: 'images/can.jpg', type: 'recyclable' },
-            { image: 'images/newspaper.jpg', type: 'recyclable' }
+            { image: 'images/newspaper.jpg', type: 'recyclable' },
+            { image: 'images/bottle_beer.jpg', type: 'recyclable' }
             
             
             // // non-recyclable waste (15)
