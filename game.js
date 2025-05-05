@@ -32,13 +32,18 @@ document.addEventListener('DOMContentLoaded', function() {
     function generateWasteItems() {
         return [
             // recyclable waste (15)
-            { image: 'images/battery.jpg', type: 'recyclable' },
             { image: 'images/plastic-bottle.jpg', type: 'recyclable' },
             { image: 'images/paper.jpg', type: 'recyclable' },
             { image: 'images/glass-bottle.jpg', type: 'recyclable' },
             { image: 'images/can.jpg', type: 'recyclable' },
             { image: 'images/newspaper.jpg', type: 'recyclable' },
-            { image: 'images/bottle_beer.jpg', type: 'recyclable' }
+            { image: 'images/bottle_beer.jpg', type: 'recyclable' },
+            { image: 'images/papper_bag.jpg', type: 'recyclable' },
+            { image: 'images/p_bottle.jpg', type: 'recyclable' },
+            { image: 'images/can_1.jpg', type: 'recyclable' },
+            { image: 'images/zhike.jpg', type: 'recyclable' },
+            { image: 'images/xizipan.jpg', type: 'recyclable' },
+            
             
             
             // // non-recyclable waste (15)
@@ -47,6 +52,24 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // // e-waste (20)
             // { image: 'images/phone.png', type: 'e-waste' },
+            { image: 'images/battery.jpg', type: 'e-waste' },
+            { image: 'images/old_phones.jpg', type: 'e-waste' },
+            { image: 'images/old_computers.jpg', type: 'e-waste' },
+            { image: 'images/old_printers.jpg', type: 'e-waste' },
+            { image: 'images/electroplx.jpg', type: 'e-waste' },
+            { image: 'images/air_conditioner.jpg', type: 'e-waste' },
+            { image: 'images/chargers.jpg', type: 'e-waste' },
+            { image: 'images/digital_cameras.jpg', type: 'e-waste' },
+            { image: 'images/earphones.jpg', type: 'e-waste' },
+            { image: 'images/electric cooker.jpg', type: 'e-waste' },
+            { image: 'images/fax_machines.jpg', type: 'e-waste' },
+            { image: 'images/microwaves.jpg', type: 'e-waste' },
+            { image: 'images/remote_controls.jpg', type: 'e-waste' },
+            { image: 'images/routers.jpg', type: 'e-waste' },
+            { image: 'images/TVs.jpg', type: 'e-waste' },
+            { image: 'images/washing_machine.jpg', type: 'e-waste' },
+            { image: 'images/smartwatches.jpg', type: 'e-waste' }
+            
             
         ];
     }
