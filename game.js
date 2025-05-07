@@ -67,15 +67,12 @@ document.addEventListener('DOMContentLoaded', function() {
             { image: 'images/more/laptop4.jpg', type: 'non-recyclable' },
             { image: 'images/more/laptop5.jpg', type: 'non-recyclable' },
             { image: 'images/more/laptop6.jpg', type: 'non-recyclable' },
-            { image: 'images/more/laptop7.jpg', type: 'non-recyclable' },
             { image: 'images/more/laptop8.jpg', type: 'non-recyclable' },
             { image: 'images/more/laptop9.jpg', type: 'non-recyclable' },
             { image: 'images/more/light_bulb1.jpg', type: 'non-recyclable' },
             { image: 'images/more/light_bulb2.jpg', type: 'non-recyclable' },
-            { image: 'images/more/light_bulb3.jpg', type: 'non-recyclable' },
             { image: 'images/more/light_bulb4.jpg', type: 'non-recyclable' },
             { image: 'images/more/light_bulb5.jpg', type: 'non-recyclable' },
-            { image: 'images/more/light_bulb6.jpg', type: 'non-recyclable' },
             { image: 'images/more/light_bulb7.jpg', type: 'non-recyclable' },
             { image: 'images/more/light_bulb8.jpg', type: 'non-recyclable' },
             { image: 'images/more/light_bulb9.jpg', type: 'non-recyclable' },
@@ -91,7 +88,6 @@ document.addEventListener('DOMContentLoaded', function() {
             
             
             // // e-waste (20)
-            // { image: 'images/phone.png', type: 'e-waste' },
             { image: 'images/battery.jpg', type: 'e-waste' },
             { image: 'images/old_phones.jpg', type: 'e-waste' },
             { image: 'images/old_computers.jpg', type: 'e-waste' },
