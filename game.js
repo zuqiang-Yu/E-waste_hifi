@@ -6,11 +6,13 @@ document.addEventListener('DOMContentLoaded', function() {
         remainingItems: 50,
         wasteData: [], 
         usedIndexes: [], // used images
+        totalCount: 0,
         timerInterval: null,
         isPlaying: false
     };
     
     const elements = {
+        scoreDisplay: document.getElementById('score-display'),
         timer: document.querySelector('.timer'),
         remaining: document.querySelector('.remaining'),
         currentWaste: document.getElementById('current-waste'),
@@ -24,6 +26,15 @@ document.addEventListener('DOMContentLoaded', function() {
         timeUsed: document.getElementById('time-used'),
         leaderboardTable: document.querySelector('#leaderboard-table tbody')
     };
+
+    function updateScoreDisplay() {
+        const percentage = (gameState.totalCount > 0) 
+            ? Math.round((gameState.correctCount / gameState.totalCount) * 100) 
+            : 0;
+        
+        elements.scoreDisplay.textContent = `Score: ${gameState.correctCount} (${percentage}%)`;
+    }
+
 
     function initWasteData() {
         gameState.wasteData = generateWasteItems();
@@ -135,6 +146,9 @@ document.addEventListener('DOMContentLoaded', function() {
                     
                     if (wasteType === binType) {
                         gameState.correctCount++;
+                        showCorrectFeedback();
+                    }else{
+                        showWrongFeedback();
                     }
                     
                     gameState.remainingItems--;
@@ -161,6 +175,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     
                     // display nest one
                     if (gameState.remainingItems > 0 && gameState.timeLeft > 0) {
+                        updateScoreDisplay();
                         showNextWaste();
                     } else {
                         endGame();
@@ -169,6 +184,68 @@ document.addEventListener('DOMContentLoaded', function() {
                 
             });
         });
+    }
+
+    function showCorrectFeedback() {
+        const feedback = document.createElement('div');
+        feedback.className = 'feedback-correct';
+        feedback.textContent = '✓ Correct! +3';
+        document.body.appendChild(feedback);
+        
+        feedback.style.position = 'fixed';
+        feedback.style.top = '50%';
+        feedback.style.left = '50%';
+        feedback.style.transform = 'translate(-50%, -50%)';
+        feedback.style.fontSize = '4rem';
+        feedback.style.color = '#4CAF50';
+        feedback.style.fontWeight = 'bold';
+        feedback.style.zIndex = '1000';
+        feedback.style.pointerEvents = 'none';
+        
+        feedback.animate([
+            { opacity: 0, transform: 'translate(-50%, -50%) scale(0.8)' },
+            { opacity: 1, transform: 'translate(-50%, -50%) scale(1.2)' },
+            { opacity: 0, transform: 'translate(-50%, -50%) scale(0.8)' }
+        ], {
+            duration: 1000,
+            easing: 'cubic-bezier(0.175, 0.885, 0.32, 1.275)'
+        });
+        
+        // automatic remove element
+        setTimeout(() => {
+            feedback.remove();
+        }, 800);
+    }
+
+    function showWrongFeedback() {
+        const feedback = document.createElement('div');
+        feedback.className = 'feedback-wrong';
+        feedback.textContent = '✗ Wrong!';
+        document.body.appendChild(feedback);
+        
+        // red display
+        feedback.style.position = 'fixed';
+        feedback.style.top = '50%';
+        feedback.style.left = '50%';
+        feedback.style.transform = 'translate(-50%, -50%)';
+        feedback.style.fontSize = '4rem';
+        feedback.style.color = '#F44336';
+        feedback.style.fontWeight = 'bold';
+        feedback.style.zIndex = '1000';
+        feedback.style.pointerEvents = 'none';
+        
+        feedback.animate([
+            { opacity: 0, transform: 'translate(-50%, -50%) scale(0.8)' },
+            { opacity: 1, transform: 'translate(-50%, -50%) scale(1.2)' },
+            { opacity: 0, transform: 'translate(-50%, -50%) scale(0.8)' }
+        ], {
+            duration: 800,
+            easing: 'cubic-bezier(0.175, 0.885, 0.32, 1.275)'
+        });
+        
+        setTimeout(() => {
+            feedback.remove();
+        }, 800);
     }
 
     
