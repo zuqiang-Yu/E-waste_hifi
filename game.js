@@ -152,7 +152,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     }
                     
                     gameState.remainingItems--;
-                    updateRemainingDisplay();
+                    // updateRemainingDisplay();
         
                     if (e.dataTransfer.getData('text/plain') === this.dataset.type) {
                         console.log("√");
@@ -257,7 +257,7 @@ document.addEventListener('DOMContentLoaded', function() {
         gameState.isPlaying = true;
         
         updateTimerDisplay();
-        updateRemainingDisplay();
+        // updateRemainingDisplay();
         showNextWaste();
         
         if (gameState.timerInterval) {
@@ -300,9 +300,9 @@ document.addEventListener('DOMContentLoaded', function() {
         elements.timer.textContent = `time: ${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
     }
     
-    function updateRemainingDisplay() {
-        elements.remaining.textContent = `rest : ${gameState.remainingItems}`;
-    }
+    // function updateRemainingDisplay() {
+    //     elements.remaining.textContent = `rest : ${gameState.remainingItems}`;
+    // }
     
     function updateTimer() {
         gameState.timeLeft--;
