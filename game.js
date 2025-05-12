@@ -207,7 +207,7 @@ document.addEventListener('DOMContentLoaded', function() {
             { opacity: 1, transform: 'translate(-50%, -50%) scale(1.2)' },
             { opacity: 0, transform: 'translate(-50%, -50%) scale(0.8)' }
         ], {
-            duration: 1000,
+            duration: 2000,
             easing: 'cubic-bezier(0.175, 0.885, 0.32, 1.275)'
         });
         
@@ -239,7 +239,7 @@ document.addEventListener('DOMContentLoaded', function() {
             { opacity: 1, transform: 'translate(-50%, -50%) scale(1.2)' },
             { opacity: 0, transform: 'translate(-50%, -50%) scale(0.8)' }
         ], {
-            duration: 800,
+            duration: 2000,
             easing: 'cubic-bezier(0.175, 0.885, 0.32, 1.275)'
         });
         
