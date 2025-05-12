@@ -69,7 +69,6 @@ document.addEventListener('DOMContentLoaded', function() {
             { image: 'images/more/fridge2.jpg', type: 'non-recyclable' },
             { image: 'images/more/fridge3.jpg', type: 'non-recyclable' },
             { image: 'images/more/fridge4.jpg', type: 'non-recyclable' },
-            { image: 'images/more/fridge5.jpg', type: 'non-recyclable' },
             { image: 'images/more/fridge6.jpg', type: 'non-recyclable' },
             { image: 'images/more/fridge7.jpg', type: 'non-recyclable' },
             { image: 'images/more/fridge8.jpg', type: 'non-recyclable' },
