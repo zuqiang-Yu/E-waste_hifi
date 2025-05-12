@@ -148,7 +148,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         gameState.correctCount++;
                         showCorrectFeedback();
                     }else{
-                        showWrongFeedback();
+                        showWrongFeedback(wasteType,binType);
                     }
                     
                     gameState.remainingItems--;
@@ -217,10 +217,17 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 800);
     }
 
-    function showWrongFeedback() {
+    function showWrongFeedback(wasteType,binType) {
         const feedback = document.createElement('div');
         feedback.className = 'feedback-wrong';
-        feedback.textContent = '✗ Wrong!';
+        if (binType == "recyclable bin"){
+            feedback.textContent = '✗ Wrong! \n' + '\nCorrect Answer: Recycling bin';
+        }else if (binType == "e-waste"){
+            feedback.textContent = '✗ Wrong! \n' + '\nCorrect Answer: \ne-waste collection point';
+        }else{
+            feedback.textContent = '✗ Wrong! \n' + '\nCorrect Answer: landfill';
+        }
+        //feedback.textContent = '✗ Wrong! \n' + 'Correct Answer: ' + binType;
         document.body.appendChild(feedback);
         
         // red display
@@ -239,13 +246,13 @@ document.addEventListener('DOMContentLoaded', function() {
             { opacity: 1, transform: 'translate(-50%, -50%) scale(1.2)' },
             { opacity: 0, transform: 'translate(-50%, -50%) scale(0.8)' }
         ], {
-            duration: 4000,
+            duration: 10000,
             easing: 'cubic-bezier(0.175, 0.885, 0.32, 1.275)'
         });
         
         setTimeout(() => {
             feedback.remove();
-        }, 800);
+        }, 2000);
     }
 
     
