@@ -21,13 +21,23 @@ document.addEventListener('DOMContentLoaded', function() {
         eWasteBin: document.getElementById('e-waste-bin'),
         startButton: document.getElementById('start-button'),
         restartButton: document.getElementById('restart-button'),
-        gameOver: document.getElementById('game-over'),
         correctCount: document.getElementById('correct-count'),
         timeUsed: document.getElementById('time-used'),
         leaderboardTable: document.querySelector('#leaderboard-table tbody'),
         startScreen: document.getElementById('start-screen'),
-        gameScreen: document.getElementById('game-screen')
+        gameScreen: document.getElementById('game-screen'),
+        gameOverScreen: document.getElementById('game-over-screen'),
+        gameOverTip: document.getElementById('game-over-tip')
     };
+
+    const gameOverTips = [
+        'E-waste is any electronic item that has reached the end of its life.',
+        'E-waste is usually any item with a plug, battery or power cord.',
+        'E-waste can contain hazardous chemicals or heavy metals like lead or mercury, so it should be disposed of properly.',
+        'E-waste can contain valuable materials like gold, silver or platinum that can be recycled.',
+        'You should recycle e-waste at e-waste collection programs or drop-off points.',
+        'E-waste should never be thrown into regular landfill.',
+    ];
 
     function updateScoreDisplay() {
         const percentage = (gameState.totalCount > 0) 
@@ -257,7 +267,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         gameState.timerInterval = setInterval(updateTimer, 1000);
         
-        elements.gameOver.style.display = 'none';
+        elements.gameOverScreen.style.display = 'none';
     }
     
     function showNextWaste() {
@@ -289,7 +299,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function updateTimerDisplay() {
         const minutes = Math.floor(gameState.timeLeft / 60);
         const seconds = gameState.timeLeft % 60;
-        elements.timer.textContent = `time: ${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        elements.timer.textContent = `Time left: ${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
     }
     
     // function updateRemainingDisplay() {
@@ -316,7 +326,11 @@ document.addEventListener('DOMContentLoaded', function() {
         
         elements.correctCount.textContent = gameState.correctCount;
         elements.timeUsed.textContent = formattedTimeUsed;
-        elements.gameOver.style.display = 'block';
+        elements.gameOverScreen.style.display = 'block';
+
+        elements.gameScreen.style.display = 'none';
+
+        elements.gameOverTip.textContent = gameOverTips[Math.floor(Math.random() * gameOverTips.length)];
         
         saveToLeaderboard(gameState.correctCount, timeUsed);
         
@@ -395,7 +409,8 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     elements.restartButton.addEventListener('click', function() {
         initGame();
-        elements.gameOver.style.display = 'none';
+        elements.gameOverScreen.style.display = 'none';
+        elements.gameScreen.style.display = 'block';
     });
     function initApp() {
         initWasteData();
