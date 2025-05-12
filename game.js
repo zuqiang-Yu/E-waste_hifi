@@ -250,7 +250,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     
     function initGame() {
-        gameState.timeLeft = 60;
+        gameState.timeLeft = 30;
         gameState.correctCount = 0;
         gameState.remainingItems = 50;
         gameState.usedIndexes = [];
@@ -317,7 +317,7 @@ document.addEventListener('DOMContentLoaded', function() {
         clearInterval(gameState.timerInterval);
         gameState.isPlaying = false;
         
-        const timeUsed = 60 - gameState.timeLeft;
+        const timeUsed = 30 - gameState.timeLeft;
         const minutes = Math.floor(timeUsed / 60);
         const seconds = timeUsed % 60;
         const formattedTimeUsed = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
