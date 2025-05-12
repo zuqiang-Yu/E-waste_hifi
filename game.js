@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     // game status
     const gameState = {
-        timeLeft: 60, 
+        timeLeft: 30, 
         correctCount: 0,
         remainingItems: 50,
         wasteData: [], 
