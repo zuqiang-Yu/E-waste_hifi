@@ -24,7 +24,9 @@ document.addEventListener('DOMContentLoaded', function() {
         gameOver: document.getElementById('game-over'),
         correctCount: document.getElementById('correct-count'),
         timeUsed: document.getElementById('time-used'),
-        leaderboardTable: document.querySelector('#leaderboard-table tbody')
+        leaderboardTable: document.querySelector('#leaderboard-table tbody'),
+        startScreen: document.getElementById('start-screen'),
+        gameScreen: document.getElementById('game-screen')
     };
 
     function updateScoreDisplay() {
@@ -405,7 +407,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     elements.startButton.addEventListener('click', function() {
         initGame();
-        this.style.display = 'none';
+        elements.startScreen.style.display = 'none';
+        elements.gameScreen.style.display = 'block';
     });
     elements.restartButton.addEventListener('click', function() {
         initGame();

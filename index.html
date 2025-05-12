@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en-US">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -159,10 +159,24 @@
         .restart-button {
             background-color: #2196F3;
         }
+
+        .instructions-list {
+            list-style-type: none;
+        }
     </style>
 </head>
 <body>
-    <div class="game-container">
+    <div class="game-container" id="start-screen">
+        <h1>Identify the E-waste</h1>
+        <ul class="instructions-list">
+            <li>You will be shown a series of items.</li>
+            <li>Drag each item to <strong>Landfill</strong>, <strong>Recycle</strong> or <strong>E-waste</strong> based on how it should be disposed.</li>
+            <li>You have 30 seconds to correctly categorise as many items as possible.</li>
+            <li>Good luck!</li>
+        </ul>
+        <button class="start-button" id="start-button">Start</button>
+    </div>
+    <div class="game-container" id="game-screen" style="display:none">
         <h1>E-waste category</h1>
         <div class="timer">Time: 00:30</div>
 <!--         <div class="remaining">Rest need to category: 50</div> -->
@@ -184,7 +198,6 @@
         
         
         
-        <button class="start-button" id="start-button">start game</button>
         
         <div class="game-over" id="game-over">
             <h2>game over!</h2>
