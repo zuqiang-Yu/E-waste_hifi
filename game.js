@@ -205,9 +205,9 @@ document.addEventListener('DOMContentLoaded', function() {
     function showWrongFeedback(wasteType,binType) {
         const feedback = document.createElement('div');
         feedback.className = 'feedback-wrong';
-        if (binType == "recyclable bin"){
+        if (wasteType == "recyclable"){
             feedback.textContent = '✗ Wrong! \n' + '\nCorrect Answer: Recycling bin';
-        }else if (binType == "e-waste"){
+        }else if (wasteType == "e-waste"){
             feedback.textContent = '✗ Wrong! \n' + '\nCorrect Answer: \ne-waste collection point';
         }else{
             feedback.textContent = '✗ Wrong! \n' + '\nCorrect Answer: landfill';
