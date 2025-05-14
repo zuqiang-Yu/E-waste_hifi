@@ -1,7 +1,9 @@
 document.addEventListener('DOMContentLoaded', function() {
+    const startingTime = 45;
+
     // game status
     const gameState = {
-        timeLeft: 30, 
+        timeLeft: startingTime,
         correctCount: 0,
         remainingItems: 50,
         wasteData: [], 
@@ -82,14 +84,14 @@ document.addEventListener('DOMContentLoaded', function() {
             { image: 'images/recycle/can_1.jpg', type: 'recyclable' },
             // { image: 'images/recycle/can_2.jpg', type: 'recyclable' },
             { image: 'images/recycle/cardboard_1.jpg', type: 'recyclable' },
-            { image: 'images/recycle/cardboard_2.jpg', type: 'recyclable' },
+            // { image: 'images/recycle/cardboard_2.jpg', type: 'recyclable' },
             // { image: 'images/recycle/cardboard_3.jpg', type: 'recyclable' },
             { image: 'images/recycle/glass_bottle_1.jpg', type: 'recyclable' },
             { image: 'images/recycle/milk_carton_1.jpg', type: 'recyclable' },
             // { image: 'images/recycle/milk_carton_2.jpg', type: 'recyclable' },
-            { image: 'images/recycle/plastic_bottle_1.jpg', type: 'recyclable' },
+            // { image: 'images/recycle/plastic_bottle_1.jpg', type: 'recyclable' },
             // { image: 'images/recycle/plastic_bottle_3.jpg', type: 'recyclable' },
-            { image: 'images/recycle/tin_can_1.jpg', type: 'recyclable' },
+            // { image: 'images/recycle/tin_can_1.jpg', type: 'recyclable' },
             // { image: 'images/recycle/tin_can_2.jpg', type: 'recyclable' },
             
             
@@ -297,7 +299,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     
     function initGame() {
-        gameState.timeLeft = 30;
+        gameState.timeLeft = startingTime;
         gameState.correctCount = 0;
         gameState.remainingItems = 50;
         gameState.usedIndexes = [];
@@ -365,7 +367,7 @@ document.addEventListener('DOMContentLoaded', function() {
         clearInterval(gameState.timerInterval);
         gameState.isPlaying = false;
         
-        const timeUsed = 30 - gameState.timeLeft;
+        const timeUsed = startingTime - gameState.timeLeft;
         const minutes = Math.floor(timeUsed / 60);
         const seconds = timeUsed % 60;
         const formattedTimeUsed = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
