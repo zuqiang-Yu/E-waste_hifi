@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const gameOverTips = [
         'E-waste is any electronic item that has reached the end of its life.',
         'E-waste is usually any item with a plug, battery or power cord.',
-        'E-waste can contain hazardous chemicals or heavy metals like lead or mercury, so it should be disposed of properly.',
+        'E-waste can contain hazardous chemicals or heavy metals like lead or mercury, so they should be disposed of properly.',
         'E-waste can contain valuable materials like gold, silver or platinum that can be recycled.',
         'You should recycle e-waste at e-waste collection programs or drop-off points.',
         'E-waste should never be thrown into regular landfill.',
@@ -79,6 +79,18 @@ document.addEventListener('DOMContentLoaded', function() {
             { image: 'images/can_1.jpg', type: 'recyclable' },
             { image: 'images/zhike.jpg', type: 'recyclable' },
             { image: 'images/xizipan.jpg', type: 'recyclable' },
+            { image: 'images/recycle/can_1.jpg', type: 'recyclable' },
+            { image: 'images/recycle/can_2.jpg', type: 'recyclable' },
+            { image: 'images/recycle/cardboard_1.jpg', type: 'recyclable' },
+            { image: 'images/recycle/cardboard_2.jpg', type: 'recyclable' },
+            { image: 'images/recycle/cardboard_3.jpg', type: 'recyclable' },
+            { image: 'images/recycle/glass_bottle_1.jpg', type: 'recyclable' },
+            { image: 'images/recycle/milk_carton_1.jpg', type: 'recyclable' },
+            { image: 'images/recycle/milk_carton_2.jpg', type: 'recyclable' },
+            { image: 'images/recycle/plastic_bottle_1.jpg', type: 'recyclable' },
+            { image: 'images/recycle/plastic_bottle_3.jpg', type: 'recyclable' },
+            { image: 'images/recycle/tin_can_1.jpg', type: 'recyclable' },
+            { image: 'images/recycle/tin_can_2.jpg', type: 'recyclable' },
             
             
             
