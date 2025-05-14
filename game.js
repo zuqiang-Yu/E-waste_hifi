@@ -86,6 +86,12 @@ document.addEventListener('DOMContentLoaded', function() {
             { image: 'images/more/light_bulb1.jpg', type: 'non-recyclable' },
             { image: 'images/more/light_bulb2.jpg', type: 'non-recyclable' },
             { image: 'images/more/light_bulb4.jpg', type: 'non-recyclable' },
+            { image: 'images/more/bag.jpg', type: 'non-recyclable' },
+            { image: 'images/more/chips.jpg', type: 'non-recyclable' },
+            { image: 'images/more/CN.jpg', type: 'non-recyclable' },
+            { image: 'images/more/cup.jpg', type: 'non-recyclable' },
+            { image: 'images/more/coffe_cup.jpg', type: 'non-recyclable' },
+            { image: 'images/more/Foam_box.jpg', type: 'non-recyclable' },
 
             
             
