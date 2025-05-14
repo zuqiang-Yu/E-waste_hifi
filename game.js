@@ -45,7 +45,9 @@ document.addEventListener('DOMContentLoaded', function() {
             ? Math.round((gameState.correctCount / gameState.totalCount) * 100) 
             : 0;
         
-        elements.scoreDisplay.textContent = `Score: ${gameState.correctCount} (${percentage}%)`;
+        // don't display percentage for now because it's broken.
+        // elements.scoreDisplay.textContent = `Score: ${gameState.correctCount} (${percentage}%)`;
+        elements.scoreDisplay.textContent = `Score: ${gameState.correctCount}`;
     }
 
     function preloadImages() {
@@ -168,7 +170,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
                     if (e.dataTransfer.getData('text/plain') === this.dataset.type) {
                         console.log("√");
-                        gameState.correctCount++;
+                        // gameState.correctCount++;
                     } else {
                         console.log("×");
                     }
@@ -176,7 +178,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     const isCorrect = (wasteType === binType);
                     if (isCorrect) {
                         this.style.boxShadow = '0 0 15px green'; 
-                        gameState.correctCount++;
+                        // gameState.correctCount++;
                     } else {
                         this.style.boxShadow = '0 0 15px red';   
                     }
@@ -201,7 +203,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function showCorrectFeedback() {
         const feedback = document.createElement('div');
         feedback.className = 'feedback-correct';
-        feedback.textContent = '✓ Correct! +3';
+        feedback.textContent = '✓ Correct!';
         document.body.appendChild(feedback);
         
         feedback.style.position = 'fixed';
@@ -278,6 +280,7 @@ document.addEventListener('DOMContentLoaded', function() {
         updateTimerDisplay();
         // updateRemainingDisplay();
         showNextWaste();
+        updateScoreDisplay(); // reset score to 0
         
         if (gameState.timerInterval) {
             clearInterval(gameState.timerInterval);
