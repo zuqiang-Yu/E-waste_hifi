@@ -47,9 +47,16 @@ document.addEventListener('DOMContentLoaded', function() {
         elements.scoreDisplay.textContent = `Score: ${gameState.correctCount} (${percentage}%)`;
     }
 
+    function preloadImages() {
+        gameState.wasteData.map(item => {
+            const img = new Image();
+            img.src = item.image;
+        })
+    }
 
     function initWasteData() {
         gameState.wasteData = generateWasteItems();
+        preloadImages();
     }
 
     function generateWasteItems() {
