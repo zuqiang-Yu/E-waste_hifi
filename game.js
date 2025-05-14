@@ -129,7 +129,7 @@ document.addEventListener('DOMContentLoaded', function() {
             { image: 'images/electroplax.jpg', type: 'e-waste' },
             { image: 'images/chargers.jpg', type: 'e-waste' },
             { image: 'images/digital_cameras.jpg', type: 'e-waste' },
-            { image: 'images/earphones.jpg', type: 'e-waste' },
+            // { image: 'images/earphones.jpg', type: 'e-waste' },
             { image: 'images/electric cooker.jpg', type: 'e-waste' },
             { image: 'images/fax_machines.jpg', type: 'e-waste' },
             { image: 'images/microwaves.jpg', type: 'e-waste' },
@@ -245,14 +245,14 @@ document.addEventListener('DOMContentLoaded', function() {
             { opacity: 1, transform: 'translate(-50%, -50%) scale(1.2)' },
             { opacity: 0, transform: 'translate(-50%, -50%) scale(0.8)' }
         ], {
-            duration: 2000,
+            duration: 2500,
             easing: 'cubic-bezier(0.175, 0.885, 0.32, 1.275)'
         });
         
         // automatic remove element
         setTimeout(() => {
             feedback.remove();
-        }, 800);
+        }, 1500);
     }
 
     function showWrongFeedback(wasteType,binType) {
@@ -290,7 +290,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         setTimeout(() => {
             feedback.remove();
-        }, 2000);
+        }, 3000);
     }
 
     
