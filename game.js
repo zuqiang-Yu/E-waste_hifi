@@ -80,17 +80,17 @@ document.addEventListener('DOMContentLoaded', function() {
             { image: 'images/zhike.jpg', type: 'recyclable' },
             { image: 'images/xizipan.jpg', type: 'recyclable' },
             { image: 'images/recycle/can_1.jpg', type: 'recyclable' },
-            { image: 'images/recycle/can_2.jpg', type: 'recyclable' },
+            // { image: 'images/recycle/can_2.jpg', type: 'recyclable' },
             { image: 'images/recycle/cardboard_1.jpg', type: 'recyclable' },
             { image: 'images/recycle/cardboard_2.jpg', type: 'recyclable' },
-            { image: 'images/recycle/cardboard_3.jpg', type: 'recyclable' },
+            // { image: 'images/recycle/cardboard_3.jpg', type: 'recyclable' },
             { image: 'images/recycle/glass_bottle_1.jpg', type: 'recyclable' },
             { image: 'images/recycle/milk_carton_1.jpg', type: 'recyclable' },
-            { image: 'images/recycle/milk_carton_2.jpg', type: 'recyclable' },
+            // { image: 'images/recycle/milk_carton_2.jpg', type: 'recyclable' },
             { image: 'images/recycle/plastic_bottle_1.jpg', type: 'recyclable' },
-            { image: 'images/recycle/plastic_bottle_3.jpg', type: 'recyclable' },
+            // { image: 'images/recycle/plastic_bottle_3.jpg', type: 'recyclable' },
             { image: 'images/recycle/tin_can_1.jpg', type: 'recyclable' },
-            { image: 'images/recycle/tin_can_2.jpg', type: 'recyclable' },
+            // { image: 'images/recycle/tin_can_2.jpg', type: 'recyclable' },
             
             
             
@@ -101,7 +101,19 @@ document.addEventListener('DOMContentLoaded', function() {
             { image: 'images/more/cup.jpg', type: 'non-recyclable' },
             { image: 'images/more/coffe_cup.jpg', type: 'non-recyclable' },
             { image: 'images/more/Foam_box.jpg', type: 'non-recyclable' },
-
+            { image: 'images/landfill/broken_glass_1.jpg', type: 'non-recyclable' },
+            { image: 'images/landfill/chip_packet_1.jpg', type: 'non-recyclable' },
+            { image: 'images/landfill/foam_1.jpg', type: 'non-recyclable' },
+            { image: 'images/landfill/garbage_bag_1.jpg', type: 'non-recyclable' },
+            { image: 'images/landfill/gloves_1.jpg', type: 'non-recyclable' },
+            // { image: 'images/landfill/gloves_2.jpg', type: 'non-recyclable' },
+            { image: 'images/landfill/hairbrush_1.jpg', type: 'non-recyclable' },
+            // { image: 'images/landfill/hairbrush_2.jpg', type: 'non-recyclable' },
+            { image: 'images/landfill/paper_towel_1.jpg', type: 'non-recyclable' },
+            { image: 'images/landfill/plastic_bag_1.jpg', type: 'non-recyclable' },
+            // { image: 'images/landfill/plastic_bag_2.jpg', type: 'non-recyclable' },
+            { image: 'images/landfill/toothbrush_1.jpg', type: 'non-recyclable' },
+            // { image: 'images/landfill/toothbrush_2.jpg', type: 'non-recyclable' },
             
             
             // // e-waste (20)
