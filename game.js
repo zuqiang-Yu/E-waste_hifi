@@ -21,6 +21,7 @@ document.addEventListener('DOMContentLoaded', function() {
         eWasteBin: document.getElementById('e-waste-bin'),
         startButton: document.getElementById('start-button'),
         restartButton: document.getElementById('restart-button'),
+        returnToStartPageButton: document.getElementById('return-to-start-page-button'),
         correctCount: document.getElementById('correct-count'),
         timeUsed: document.getElementById('time-used'),
         leaderboardTable: document.querySelector('#leaderboard-table tbody'),
@@ -50,6 +51,9 @@ document.addEventListener('DOMContentLoaded', function() {
     function preloadImages() {
         gameState.wasteData.map(item => {
             const img = new Image();
+            img.onerror = () => {
+                console.log("can't load image: " + img.src);
+            }
             img.src = item.image;
         })
     }
@@ -90,7 +94,7 @@ document.addEventListener('DOMContentLoaded', function() {
             { image: 'images/old_phones.jpg', type: 'e-waste' },
             { image: 'images/old_computers.jpg', type: 'e-waste' },
             { image: 'images/old_printers.jpg', type: 'e-waste' },
-            { image: 'images/electroplx.jpg', type: 'e-waste' },
+            { image: 'images/electroplax.jpg', type: 'e-waste' },
             { image: 'images/chargers.jpg', type: 'e-waste' },
             { image: 'images/digital_cameras.jpg', type: 'e-waste' },
             { image: 'images/earphones.jpg', type: 'e-waste' },
@@ -418,6 +422,10 @@ document.addEventListener('DOMContentLoaded', function() {
         initGame();
         elements.gameOverScreen.style.display = 'none';
         elements.gameScreen.style.display = 'block';
+    });
+    elements.returnToStartPageButton.addEventListener('click', function() {
+        elements.startScreen.style.display = 'block';
+        elements.gameOverScreen.style.display = 'none';
     });
     function initApp() {
         initWasteData();
