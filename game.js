@@ -81,11 +81,6 @@ document.addEventListener('DOMContentLoaded', function() {
             
             
             // // non-recyclable waste (15)
-            { image: 'images/more/fluorescent_tube1.jpg', type: 'non-recyclable' },
-            { image: 'images/more/fluorescent_tube2.jpg', type: 'non-recyclable' },
-            { image: 'images/more/light_bulb1.jpg', type: 'non-recyclable' },
-            { image: 'images/more/light_bulb2.jpg', type: 'non-recyclable' },
-            { image: 'images/more/light_bulb4.jpg', type: 'non-recyclable' },
             { image: 'images/more/bag.jpg', type: 'non-recyclable' },
             { image: 'images/more/chips.jpg', type: 'non-recyclable' },
             { image: 'images/more/CN.jpg', type: 'non-recyclable' },
@@ -96,6 +91,11 @@ document.addEventListener('DOMContentLoaded', function() {
             
             
             // // e-waste (20)
+            { image: 'images/more/fluorescent_tube1.jpg', type: 'e-waste' },
+            { image: 'images/more/fluorescent_tube2.jpg', type: 'e-waste' },
+            { image: 'images/more/light_bulb1.jpg', type: 'e-waste' },
+            { image: 'images/more/light_bulb2.jpg', type: 'e-waste' },
+            { image: 'images/more/light_bulb4.jpg', type: 'e-waste' },
             { image: 'images/battery.jpg', type: 'e-waste' },
             { image: 'images/old_phones.jpg', type: 'e-waste' },
             { image: 'images/old_computers.jpg', type: 'e-waste' },
