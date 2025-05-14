@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const startingTime = 45;
+    const startingTime = 30;
 
     // game status
     const gameState = {
@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function() {
     };
 
     const gameOverTips = [
-        'E-waste is any electronic item that has reached the end of its life.',
+        // 'E-waste is any electronic item that has reached the end of its life.',
         'E-waste is usually any item with a plug, battery or power cord.',
         'E-waste can contain hazardous chemicals or heavy metals like lead or mercury, so they should be disposed of properly.',
         'E-waste can contain valuable materials like gold, silver or platinum that can be recycled.',
@@ -82,16 +82,16 @@ document.addEventListener('DOMContentLoaded', function() {
             { image: 'images/zhike.jpg', type: 'recyclable' },
             { image: 'images/xizipan.jpg', type: 'recyclable' },
             { image: 'images/recycle/can_1.jpg', type: 'recyclable' },
-            // { image: 'images/recycle/can_2.jpg', type: 'recyclable' },
+            { image: 'images/recycle/can_2.jpg', type: 'recyclable' },
             { image: 'images/recycle/cardboard_1.jpg', type: 'recyclable' },
-            // { image: 'images/recycle/cardboard_2.jpg', type: 'recyclable' },
+            { image: 'images/recycle/cardboard_2.jpg', type: 'recyclable' },
             // { image: 'images/recycle/cardboard_3.jpg', type: 'recyclable' },
             { image: 'images/recycle/glass_bottle_1.jpg', type: 'recyclable' },
             { image: 'images/recycle/milk_carton_1.jpg', type: 'recyclable' },
-            // { image: 'images/recycle/milk_carton_2.jpg', type: 'recyclable' },
-            // { image: 'images/recycle/plastic_bottle_1.jpg', type: 'recyclable' },
+            { image: 'images/recycle/milk_carton_2.jpg', type: 'recyclable' },
+            { image: 'images/recycle/plastic_bottle_1.jpg', type: 'recyclable' },
             // { image: 'images/recycle/plastic_bottle_3.jpg', type: 'recyclable' },
-            // { image: 'images/recycle/tin_can_1.jpg', type: 'recyclable' },
+            { image: 'images/recycle/tin_can_1.jpg', type: 'recyclable' },
             // { image: 'images/recycle/tin_can_2.jpg', type: 'recyclable' },
             
             
@@ -108,14 +108,14 @@ document.addEventListener('DOMContentLoaded', function() {
             { image: 'images/landfill/foam_1.jpg', type: 'non-recyclable' },
             { image: 'images/landfill/garbage_bag_1.jpg', type: 'non-recyclable' },
             { image: 'images/landfill/gloves_1.jpg', type: 'non-recyclable' },
-            // { image: 'images/landfill/gloves_2.jpg', type: 'non-recyclable' },
+            { image: 'images/landfill/gloves_2.jpg', type: 'non-recyclable' },
             { image: 'images/landfill/hairbrush_1.jpg', type: 'non-recyclable' },
-            // { image: 'images/landfill/hairbrush_2.jpg', type: 'non-recyclable' },
+            { image: 'images/landfill/hairbrush_2.jpg', type: 'non-recyclable' },
             { image: 'images/landfill/paper_towel_1.jpg', type: 'non-recyclable' },
             { image: 'images/landfill/plastic_bag_1.jpg', type: 'non-recyclable' },
-            // { image: 'images/landfill/plastic_bag_2.jpg', type: 'non-recyclable' },
+            { image: 'images/landfill/plastic_bag_2.jpg', type: 'non-recyclable' },
             { image: 'images/landfill/toothbrush_1.jpg', type: 'non-recyclable' },
-            // { image: 'images/landfill/toothbrush_2.jpg', type: 'non-recyclable' },
+            { image: 'images/landfill/toothbrush_2.jpg', type: 'non-recyclable' },
             
             
             // // e-waste (20)
@@ -144,11 +144,11 @@ document.addEventListener('DOMContentLoaded', function() {
             { image: 'images/more/earphones_2.png', type: 'e-waste' },
             { image: 'images/more/laptop1.jpg', type: 'e-waste' },
             { image: 'images/more/laptop2.jpg', type: 'e-waste' },
-            { image: 'images/more/laptop3.jpg', type: 'e-waste' },
-            { image: 'images/more/laptop9.jpg', type: 'e-waste' },
+            // { image: 'images/more/laptop3.jpg', type: 'e-waste' },
+            // { image: 'images/more/laptop9.jpg', type: 'e-waste' },
             { image: 'images/more/phone1.jpg', type: 'e-waste' },
             { image: 'images/more/phone2.jpg', type: 'e-waste' },
-            { image: 'images/more/phone3.jpg', type: 'e-waste' },
+            // { image: 'images/more/phone3.jpg', type: 'e-waste' },
             { image: 'images/computer123.jpg', type: 'e-waste' },
             { image: 'images/headphone.jpg', type: 'e-waste' },
             { image: 'images/ipad.jpg', type: 'e-waste' },
@@ -288,13 +288,13 @@ document.addEventListener('DOMContentLoaded', function() {
             { opacity: 1, transform: 'translate(-50%, -50%) scale(1.2)' },
             { opacity: 0, transform: 'translate(-50%, -50%) scale(0.8)' }
         ], {
-            duration: 10000,
+            duration: 8000,
             easing: 'cubic-bezier(0.175, 0.885, 0.32, 1.275)'
         });
         
         setTimeout(() => {
             feedback.remove();
-        }, 3000);
+        }, 1800);
     }
 
     
