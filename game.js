@@ -138,6 +138,8 @@ document.addEventListener('DOMContentLoaded', function() {
             { image: 'images/TVs.jpg', type: 'e-waste' },
             { image: 'images/washing_machine.jpg', type: 'e-waste' },
             { image: 'images/smartwatches.jpg', type: 'e-waste' },
+            { image: 'images/more/earphones_1.png', type: 'e-waste' },
+            { image: 'images/more/earphones_2.png', type: 'e-waste' },
             { image: 'images/more/laptop1.jpg', type: 'e-waste' },
             { image: 'images/more/laptop2.jpg', type: 'e-waste' },
             { image: 'images/more/laptop3.jpg', type: 'e-waste' },
