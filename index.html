@@ -87,8 +87,8 @@
         }
         
         .waste-item {
-            width: 200px;
-            height: 200px;
+            width: 300px;
+            height: 300px;
             margin: 20px auto;
             border-radius: 8px;
             background-size: contain;
@@ -98,7 +98,7 @@
             box-shadow: 0 0 5px rgba(0,0,0,0.3);
             cursor: grab;
             transition: transform 0.1s;
-            margin-bottom: 200px;
+            margin-bottom: 100px;
         }
         
         .waste-item:active {
@@ -111,7 +111,6 @@
         }
         
         .game-over {
-            display: none;
             margin-top: 20px;
         }
         
@@ -145,7 +144,7 @@
             background-color: #f5f5f5;
         }
         
-        .start-button, .restart-button {
+        .start-button, .restart-button, .return-to-start-page-button {
             background-color: #4CAF50;
             color: white;
             border: none;
@@ -156,14 +155,41 @@
             margin-top: 10px;
         }
         
-        .restart-button {
+        .restart-button, .return-to-start-page-button {
             background-color: #2196F3;
         }
 
         .instructions-list {
             list-style-type: none;
         }
-    </style>
+    
+@media (max-width: 768px) {
+    .bins-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .bin {
+        width: 80%;
+        margin-bottom: 20px;
+    }
+
+    .waste-item {
+        width: 80vw;
+        height: 80vw;
+        max-width: 300px;
+        max-height: 300px;
+    }
+
+    .start-button,
+    .restart-button,
+    .return-to-start-page-button {
+        width: 100%;
+        font-size: 18px;
+    }
+}
+
+</style>
 </head>
 <body>
     <div class="game-container" id="start-screen">
@@ -171,13 +197,13 @@
         <ul class="instructions-list">
             <li>You will be shown a series of items.</li>
             <li>Drag each item to <strong>Landfill</strong>, <strong>Recycle</strong> or <strong>E-waste</strong> based on how it should be disposed.</li>
+            <li>'E-waste' is any electronic item or equipment that is being discarded.</li>
             <li>You have 30 seconds to correctly categorise as many items as possible.</li>
             <li>Good luck!</li>
         </ul>
         <button class="start-button" id="start-button">Start</button>
     </div>
     <div class="game-container" id="game-screen" style="display:none">
-        <h1>E-waste category</h1>
         <div class="timer">Time: 00:30</div>
 <!--         <div class="remaining">Rest need to category: 50</div> -->
         <div class="score" id="score-display">Score: 0 </div>
@@ -195,25 +221,26 @@
                 E-waste collection point
             </div>
         </div>
-        
-        
-        
-        
-        <div class="game-over" id="game-over">
-            <h2>game over!</h2>
-            <p>You categoried corrected <span id="correct-count">0</span> waste</p>
-            <p>Time used: <span id="time-used">00:00</span></p>
-            <button class="restart-button" id="restart-button">play again</button>
+    </div>
+
+    <div class="game-container" id="game-over-screen" style="display:none">
+        <div class="game-over">
+            <h2>Game over!</h2>
+            <p>Score: <span id="correct-count">0</span></p>
+            <p><strong>Tip:</strong> <span id="game-over-tip"></span></p>
+            <p style="display:none">Time used: <span id="time-used">00:00</span></p>
+            <button class="restart-button" id="restart-button">Play again</button>
+            <button class="return-to-start-page-button" id="return-to-start-page-button">Back to Start Page</button>
             
             <div class="leaderboard">
-                <h2>leaderboard</h2>
+                <h2>Leaderboard</h2>
                 <table id="leaderboard-table">
                     <thead>
                         <tr>
-                            <th>ranking</th>
-                            <th>score</th>
-                            <th>used time</th>
-                            <th>date time</th>
+                            <th>Ranking</th>
+                            <th>Score</th>
+                            <th>Used time</th>
+                            <th>Date</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -225,5 +252,11 @@
     </div>
 
     <script src="game.js"></script>
+
+    <!-- Audio Elements -->
+    <audio id="bg-music" src="sounds/music.mp3" loop preload="auto"></audio>
+    <audio id="correct-sound" src="sounds/correct.mp3" preload="auto"></audio>
+    <audio id="wrong-sound" src="sounds/wrong.mp3" preload="auto"></audio>
 </body>
+
 </html>

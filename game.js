@@ -1,7 +1,9 @@
 document.addEventListener('DOMContentLoaded', function() {
+    const startingTime = 30;
+
     // game status
     const gameState = {
-        timeLeft: 30, 
+        timeLeft: startingTime,
         correctCount: 0,
         remainingItems: 50,
         wasteData: [], 
@@ -11,6 +13,26 @@ document.addEventListener('DOMContentLoaded', function() {
         isPlaying: false
     };
     
+    
+    const bgMusic = document.getElementById('bg-music');
+    const correctSound = document.getElementById('correct-sound');
+    const wrongSound = document.getElementById('wrong-sound');
+
+    function startBackgroundMusic() {
+        bgMusic.currentTime = 0;
+        bgMusic.play();
+        bgMusic.playbackRate = 1;
+        let rate = 1.0;
+        const musicInterval = setInterval(() => {
+            if (!gameState.isPlaying || rate >= 2.0) {
+                clearInterval(musicInterval);
+                return;
+            }
+            rate += 0.05;
+            bgMusic.playbackRate = rate;
+        }, 5000);
+    }
+
     const elements = {
         scoreDisplay: document.getElementById('score-display'),
         timer: document.querySelector('.timer'),
@@ -21,25 +43,48 @@ document.addEventListener('DOMContentLoaded', function() {
         eWasteBin: document.getElementById('e-waste-bin'),
         startButton: document.getElementById('start-button'),
         restartButton: document.getElementById('restart-button'),
-        gameOver: document.getElementById('game-over'),
+        returnToStartPageButton: document.getElementById('return-to-start-page-button'),
         correctCount: document.getElementById('correct-count'),
         timeUsed: document.getElementById('time-used'),
         leaderboardTable: document.querySelector('#leaderboard-table tbody'),
         startScreen: document.getElementById('start-screen'),
-        gameScreen: document.getElementById('game-screen')
+        gameScreen: document.getElementById('game-screen'),
+        gameOverScreen: document.getElementById('game-over-screen'),
+        gameOverTip: document.getElementById('game-over-tip')
     };
+
+    const gameOverTips = [
+        // 'E-waste is any electronic item that has reached the end of its life.',
+        'E-waste is usually any item with a plug, battery or power cord.',
+        'E-waste can contain hazardous chemicals or heavy metals like lead or mercury, so they should be disposed of properly.',
+        'E-waste can contain valuable materials like gold, silver or platinum that can be recycled.',
+        'You should recycle e-waste at e-waste collection programs or drop-off points.',
+        'E-waste should never be thrown into regular landfill.',
+    ];
 
     function updateScoreDisplay() {
         const percentage = (gameState.totalCount > 0) 
             ? Math.round((gameState.correctCount / gameState.totalCount) * 100) 
             : 0;
         
-        elements.scoreDisplay.textContent = `Score: ${gameState.correctCount} (${percentage}%)`;
+        // don't display percentage for now because it's broken.
+        // elements.scoreDisplay.textContent = `Score: ${gameState.correctCount} (${percentage}%)`;
+        elements.scoreDisplay.textContent = `Score: ${gameState.correctCount}`;
     }
 
+    function preloadImages() {
+        gameState.wasteData.map(item => {
+            const img = new Image();
+            img.onerror = () => {
+                console.log("can't load image: " + img.src);
+            }
+            img.src = item.image;
+        })
+    }
 
     function initWasteData() {
         gameState.wasteData = generateWasteItems();
+        preloadImages();
     }
 
     function generateWasteItems() {
@@ -56,33 +101,57 @@ document.addEventListener('DOMContentLoaded', function() {
             { image: 'images/can_1.jpg', type: 'recyclable' },
             { image: 'images/zhike.jpg', type: 'recyclable' },
             { image: 'images/xizipan.jpg', type: 'recyclable' },
+            { image: 'images/recycle/can_1.jpg', type: 'recyclable' },
+            { image: 'images/recycle/can_2.jpg', type: 'recyclable' },
+            { image: 'images/recycle/cardboard_1.jpg', type: 'recyclable' },
+            { image: 'images/recycle/cardboard_2.jpg', type: 'recyclable' },
+            // { image: 'images/recycle/cardboard_3.jpg', type: 'recyclable' },
+            { image: 'images/recycle/glass_bottle_1.jpg', type: 'recyclable' },
+            { image: 'images/recycle/milk_carton_1.jpg', type: 'recyclable' },
+            { image: 'images/recycle/milk_carton_2.jpg', type: 'recyclable' },
+            { image: 'images/recycle/plastic_bottle_1.jpg', type: 'recyclable' },
+            // { image: 'images/recycle/plastic_bottle_3.jpg', type: 'recyclable' },
+            { image: 'images/recycle/tin_can_1.jpg', type: 'recyclable' },
+            // { image: 'images/recycle/tin_can_2.jpg', type: 'recyclable' },
             
             
             
             // // non-recyclable waste (15)
-            { image: 'images/more/fluorescent_tube1.jpg', type: 'non-recyclable' },
-            { image: 'images/more/fluorescent_tube2.jpg', type: 'non-recyclable' },
-            { image: 'images/more/light_bulb1.jpg', type: 'non-recyclable' },
-            { image: 'images/more/light_bulb2.jpg', type: 'non-recyclable' },
-            { image: 'images/more/light_bulb4.jpg', type: 'non-recyclable' },
             { image: 'images/more/bag.jpg', type: 'non-recyclable' },
             { image: 'images/more/chips.jpg', type: 'non-recyclable' },
             { image: 'images/more/CN.jpg', type: 'non-recyclable' },
             { image: 'images/more/cup.jpg', type: 'non-recyclable' },
             { image: 'images/more/coffe_cup.jpg', type: 'non-recyclable' },
             { image: 'images/more/Foam_box.jpg', type: 'non-recyclable' },
-
+            { image: 'images/landfill/broken_glass_1.jpg', type: 'non-recyclable' },
+            { image: 'images/landfill/chip_packet_1.jpg', type: 'non-recyclable' },
+            { image: 'images/landfill/foam_1.jpg', type: 'non-recyclable' },
+            { image: 'images/landfill/garbage_bag_1.jpg', type: 'non-recyclable' },
+            { image: 'images/landfill/gloves_1.jpg', type: 'non-recyclable' },
+            { image: 'images/landfill/gloves_2.jpg', type: 'non-recyclable' },
+            { image: 'images/landfill/hairbrush_1.jpg', type: 'non-recyclable' },
+            { image: 'images/landfill/hairbrush_2.jpg', type: 'non-recyclable' },
+            { image: 'images/landfill/paper_towel_1.jpg', type: 'non-recyclable' },
+            { image: 'images/landfill/plastic_bag_1.jpg', type: 'non-recyclable' },
+            { image: 'images/landfill/plastic_bag_2.jpg', type: 'non-recyclable' },
+            { image: 'images/landfill/toothbrush_1.jpg', type: 'non-recyclable' },
+            { image: 'images/landfill/toothbrush_2.jpg', type: 'non-recyclable' },
             
             
             // // e-waste (20)
+            { image: 'images/more/fluorescent_tube1.jpg', type: 'e-waste' },
+            { image: 'images/more/fluorescent_tube2.jpg', type: 'e-waste' },
+            { image: 'images/more/light_bulb1.jpg', type: 'e-waste' },
+            { image: 'images/more/light_bulb2.jpg', type: 'e-waste' },
+            { image: 'images/more/light_bulb4.jpg', type: 'e-waste' },
             { image: 'images/battery.jpg', type: 'e-waste' },
             { image: 'images/old_phones.jpg', type: 'e-waste' },
             { image: 'images/old_computers.jpg', type: 'e-waste' },
             { image: 'images/old_printers.jpg', type: 'e-waste' },
-            { image: 'images/electroplx.jpg', type: 'e-waste' },
+            { image: 'images/electroplax.jpg', type: 'e-waste' },
             { image: 'images/chargers.jpg', type: 'e-waste' },
             { image: 'images/digital_cameras.jpg', type: 'e-waste' },
-            { image: 'images/earphones.jpg', type: 'e-waste' },
+            // { image: 'images/earphones.jpg', type: 'e-waste' },
             { image: 'images/electric cooker.jpg', type: 'e-waste' },
             { image: 'images/fax_machines.jpg', type: 'e-waste' },
             { image: 'images/microwaves.jpg', type: 'e-waste' },
@@ -91,13 +160,15 @@ document.addEventListener('DOMContentLoaded', function() {
             { image: 'images/TVs.jpg', type: 'e-waste' },
             { image: 'images/washing_machine.jpg', type: 'e-waste' },
             { image: 'images/smartwatches.jpg', type: 'e-waste' },
+            { image: 'images/more/earphones_1.png', type: 'e-waste' },
+            { image: 'images/more/earphones_2.png', type: 'e-waste' },
             { image: 'images/more/laptop1.jpg', type: 'e-waste' },
             { image: 'images/more/laptop2.jpg', type: 'e-waste' },
-            { image: 'images/more/laptop3.jpg', type: 'e-waste' },
-            { image: 'images/more/laptop9.jpg', type: 'e-waste' },
+            // { image: 'images/more/laptop3.jpg', type: 'e-waste' },
+            // { image: 'images/more/laptop9.jpg', type: 'e-waste' },
             { image: 'images/more/phone1.jpg', type: 'e-waste' },
             { image: 'images/more/phone2.jpg', type: 'e-waste' },
-            { image: 'images/more/phone3.jpg', type: 'e-waste' },
+            // { image: 'images/more/phone3.jpg', type: 'e-waste' },
             { image: 'images/computer123.jpg', type: 'e-waste' },
             { image: 'images/headphone.jpg', type: 'e-waste' },
             { image: 'images/ipad.jpg', type: 'e-waste' },
@@ -147,7 +218,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
                     if (e.dataTransfer.getData('text/plain') === this.dataset.type) {
                         console.log("√");
-                        gameState.correctCount++;
+                        // gameState.correctCount++;
                     } else {
                         console.log("×");
                     }
@@ -155,7 +226,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     const isCorrect = (wasteType === binType);
                     if (isCorrect) {
                         this.style.boxShadow = '0 0 15px green'; 
-                        gameState.correctCount++;
+                        // gameState.correctCount++;
                     } else {
                         this.style.boxShadow = '0 0 15px red';   
                     }
@@ -178,9 +249,11 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function showCorrectFeedback() {
+        correctSound.currentTime = 0;
+        correctSound.play();
         const feedback = document.createElement('div');
         feedback.className = 'feedback-correct';
-        feedback.textContent = '✓ Correct! +3';
+        feedback.textContent = '✓ Correct!';
         document.body.appendChild(feedback);
         
         feedback.style.position = 'fixed';
@@ -198,17 +271,19 @@ document.addEventListener('DOMContentLoaded', function() {
             { opacity: 1, transform: 'translate(-50%, -50%) scale(1.2)' },
             { opacity: 0, transform: 'translate(-50%, -50%) scale(0.8)' }
         ], {
-            duration: 2000,
+            duration: 2500,
             easing: 'cubic-bezier(0.175, 0.885, 0.32, 1.275)'
         });
         
         // automatic remove element
         setTimeout(() => {
             feedback.remove();
-        }, 800);
+        }, 1500);
     }
 
     function showWrongFeedback(wasteType,binType) {
+        wrongSound.currentTime = 0;
+        wrongSound.play();
         const feedback = document.createElement('div');
         feedback.className = 'feedback-wrong';
         if (wasteType == "recyclable"){
@@ -237,18 +312,18 @@ document.addEventListener('DOMContentLoaded', function() {
             { opacity: 1, transform: 'translate(-50%, -50%) scale(1.2)' },
             { opacity: 0, transform: 'translate(-50%, -50%) scale(0.8)' }
         ], {
-            duration: 10000,
+            duration: 8000,
             easing: 'cubic-bezier(0.175, 0.885, 0.32, 1.275)'
         });
         
         setTimeout(() => {
             feedback.remove();
-        }, 2000);
+        }, 1800);
     }
 
     
     function initGame() {
-        gameState.timeLeft = 30;
+        gameState.timeLeft = startingTime;
         gameState.correctCount = 0;
         gameState.remainingItems = 50;
         gameState.usedIndexes = [];
@@ -257,13 +332,15 @@ document.addEventListener('DOMContentLoaded', function() {
         updateTimerDisplay();
         // updateRemainingDisplay();
         showNextWaste();
+        updateScoreDisplay(); // reset score to 0
+        startBackgroundMusic();
         
         if (gameState.timerInterval) {
             clearInterval(gameState.timerInterval);
         }
         gameState.timerInterval = setInterval(updateTimer, 1000);
         
-        elements.gameOver.style.display = 'none';
+        elements.gameOverScreen.style.display = 'none';
     }
     
     function showNextWaste() {
@@ -295,7 +372,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function updateTimerDisplay() {
         const minutes = Math.floor(gameState.timeLeft / 60);
         const seconds = gameState.timeLeft % 60;
-        elements.timer.textContent = `time: ${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        elements.timer.textContent = `Time left: ${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
     }
     
     // function updateRemainingDisplay() {
@@ -314,15 +391,22 @@ document.addEventListener('DOMContentLoaded', function() {
     function endGame() {
         clearInterval(gameState.timerInterval);
         gameState.isPlaying = false;
+        bgMusic.pause();
+        bgMusic.currentTime = 0;
+        bgMusic.playbackRate = 1;
         
-        const timeUsed = 30 - gameState.timeLeft;
+        const timeUsed = startingTime - gameState.timeLeft;
         const minutes = Math.floor(timeUsed / 60);
         const seconds = timeUsed % 60;
         const formattedTimeUsed = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
         
         elements.correctCount.textContent = gameState.correctCount;
         elements.timeUsed.textContent = formattedTimeUsed;
-        elements.gameOver.style.display = 'block';
+        elements.gameOverScreen.style.display = 'block';
+
+        elements.gameScreen.style.display = 'none';
+
+        elements.gameOverTip.textContent = gameOverTips[Math.floor(Math.random() * gameOverTips.length)];
         
         saveToLeaderboard(gameState.correctCount, timeUsed);
         
@@ -401,7 +485,12 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     elements.restartButton.addEventListener('click', function() {
         initGame();
-        elements.gameOver.style.display = 'none';
+        elements.gameOverScreen.style.display = 'none';
+        elements.gameScreen.style.display = 'block';
+    });
+    elements.returnToStartPageButton.addEventListener('click', function() {
+        elements.startScreen.style.display = 'block';
+        elements.gameOverScreen.style.display = 'none';
     });
     function initApp() {
         initWasteData();
