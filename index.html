@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>E-waste category</title>
+    <!-- star rating based on https://www.w3schools.com/howto/howto_css_star_rating.asp -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -162,6 +164,10 @@
         .instructions-list {
             list-style-type: none;
         }
+
+        .star-checked {
+            color: orange;
+        }
     
 @media (max-width: 768px) {
     .bins-container {
@@ -227,6 +233,12 @@
         <div class="game-over">
             <h2>Game over!</h2>
             <p>Score: <span id="correct-count">0</span></p>
+            <div>
+                <span class="fa fa-star"></span>
+                <span class="fa fa-star"></span>
+                <span class="fa fa-star"></span>
+            </div>
+            <p id="star-message">Get X more items correct to achieve Y stars!</p>
             <p><strong>Tip:</strong> <span id="game-over-tip"></span></p>
             <p style="display:none">Time used: <span id="time-used">00:00</span></p>
             <button class="restart-button" id="restart-button">Play again</button>

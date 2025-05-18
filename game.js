@@ -50,8 +50,12 @@ document.addEventListener('DOMContentLoaded', function() {
         startScreen: document.getElementById('start-screen'),
         gameScreen: document.getElementById('game-screen'),
         gameOverScreen: document.getElementById('game-over-screen'),
-        gameOverTip: document.getElementById('game-over-tip')
+        gameOverTip: document.getElementById('game-over-tip'),
+        stars: document.getElementsByClassName('fa-star'),
+        starMessage: document.getElementById('star-message')
     };
+
+    const starThresholds = [5, 10, 15];
 
     const gameOverTips = [
         // 'E-waste is any electronic item that has reached the end of its life.',
@@ -403,6 +407,24 @@ document.addEventListener('DOMContentLoaded', function() {
         elements.correctCount.textContent = gameState.correctCount;
         elements.timeUsed.textContent = formattedTimeUsed;
         elements.gameOverScreen.style.display = 'block';
+
+        let starsAchieved = 0;
+        for (let i = 0; i < starThresholds.length; i++) {
+            console.log(elements.stars, i);
+            if (gameState.correctCount >= starThresholds[i]) {
+                elements.stars[i].classList.add('star-checked');
+                starsAchieved = i+1;
+            } else {
+                elements.stars[i].classList.remove('star-checked');
+            }
+        }
+
+        if (starsAchieved < starThresholds.length) {
+            const neededForNextStar = starThresholds[starsAchieved] - gameState.correctCount;
+            elements.starMessage.textContent = `Get ${neededForNextStar} more items correct to unlock the next star!`;
+        } else {
+            elements.starMessage.textContent = `Well done! You unlocked all ${starThresholds.length} stars!`;
+        }
 
         elements.gameScreen.style.display = 'none';
 
