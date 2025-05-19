@@ -140,6 +140,7 @@ document.addEventListener('DOMContentLoaded', function() {
             { image: 'images/landfill/plastic_bag_2.jpg', type: 'non-recyclable' },
             { image: 'images/landfill/toothbrush_1.jpg', type: 'non-recyclable' },
             { image: 'images/landfill/toothbrush_2.jpg', type: 'non-recyclable' },
+            { image: 'images/glass23.png', type: 'non-recyclable' },
             
             
             // // e-waste (20)
